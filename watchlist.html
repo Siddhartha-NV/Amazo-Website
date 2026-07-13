@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StreamFlix | My List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <nav class="scrolled"> <!-- Always solid on sub-pages -->
+        <div class="nav-left">
+            <h1 class="logo" onclick="location.href='index.html'">STREAMFLIX</h1>
+            <ul class="nav-menu">
+                <li onclick="location.href='index.html'">Home</li>
+                <li class="active" onclick="location.href='watchlist.html'">Watch Later</li>
+                <li onclick="location.href='favorites.html'">Favorites</li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="subpage-container">
+        <h1 class="page-title">My Watchlist</h1>
+        <div id="watchlistGrid" class="movie-grid">
+            <!-- Saved movies will appear here -->
+        </div>
+    </div>
+
+    <script src="movies.js"></script>
+    <script src="watchlist.js"></script>
+</body>
+</html>

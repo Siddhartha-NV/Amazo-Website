@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamFlix | Netflix Clone</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Updated Font Awesome link for better icon support -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-left">
+            <h1 class="logo" onclick="window.location.href='index.html'">STREAMFLIX</h1>
+            <ul class="nav-menu">
+                <li class="active" onclick="location.href='index.html'">Home</li>
+                <li>TV Shows</li>
+                <li>Movies</li>
+                <li onclick="location.href='watchlist.html'">My List (<span id="watchlistCount">0</span>)</li>
+                <li onclick="location.href='favorites.html'">Favorites</li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <div class="search-box">
+                <i class="fa fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Titles, people, genres...">
+            </div>
+            <i class="fa fa-bell"></i>
+            <div class="profile-icon"></div>
+        </div>
+    </nav>
+
+    <!-- Billboard (Hero) -->
+    <header class="billboard">
+        <div class="inner-billboard">
+            <div class="vignette"></div>
+            <div class="billboard-content">
+                <!-- Using Text-based Logo for better reliability -->
+                <h1 class="hero-title-text">STRANGER<br>THINGS</h1>
+                
+                <div class="meta">
+                    <span class="match" style="color: #46d369;">98% Match</span>
+                    <span>2024</span>
+                    <span class="age-limit" style="border: 1px solid white; padding: 0 5px;">16+</span>
+                    <span>4 Seasons</span>
+                </div>
+                <p class="description">When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.</p>
+                
+                <div class="billboard-btns">
+                    <button class="play-btn"><i class="fa fa-play"></i> Play</button>
+                    <!-- Fixed Info Icon -->
+                    <button class="info-btn"><i class="fa fa-info-circle"></i> More Info</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Rows will be injected here -->
+    <main id="mainRows" class="rows-container"></main>
+
+    <!-- IMPORTANT: Load Data First, then Logic -->
+    <script src="movies.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

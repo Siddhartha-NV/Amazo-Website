@@ -1,0 +1,132 @@
+:root {
+    --netflix-red: #E50914;
+    --dark-bg: #141414;
+    --card-width: 280px;
+    --card-height: 157px; 
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+
+body { background-color: var(--dark-bg); color: white; overflow-x: hidden; }
+
+/* Navbar Logic */
+nav {
+    position: fixed; top: 0; width: 100%; height: 70px;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 4%; z-index: 1000; transition: 0.5s;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+nav.scrolled { background: var(--dark-bg); }
+.logo { color: var(--netflix-red); font-size: 1.8rem; font-weight: bold; cursor: pointer; }
+.nav-menu { display: flex; list-style: none; margin-left: 30px; gap: 20px; font-size: 0.85rem; }
+.nav-menu li { cursor: pointer; opacity: 0.8; transition: 0.3s; }
+.nav-menu li:hover { opacity: 1; }
+
+.hero-title-text {
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: -2px;
+}
+
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.search-box { display: flex; align-items: center; border: 1px solid white; padding: 5px 10px; background: rgba(0,0,0,0.5); }
+.search-box input { background: none; border: none; color: white; margin-left: 10px; outline: none; }
+
+/* Billboard */
+.billboard { height: 85vh; width: 100%; position: relative; margin-bottom: 20px; }
+.inner-billboard {
+    height: 100%; width: 100%;
+    background: url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    background-position: center 20%;
+}
+.vignette {
+    position: absolute; width: 100%; height: 100%;
+    background: linear-gradient(70deg, rgba(0,0,0,0.9), transparent 60%),
+                linear-gradient(to top, var(--dark-bg), transparent 40%);
+}
+.billboard-content { position: absolute; top: 30%; left: 4%; width: 40%; z-index: 10; }
+.title-logo { font-size: 3.5rem; font-weight: 900; margin-bottom: 10px; line-height: 1; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+.meta { display: flex; gap: 15px; font-weight: bold; font-size: 1.1rem; margin-bottom: 15px; }
+.match { color: #46d369; }
+.description { font-size: 1.2rem; line-height: 1.4; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); margin-bottom: 20px; }
+.billboard-btns button { padding: 12px 35px; font-size: 1.1rem; font-weight: bold; border-radius: 4px; border: none; cursor: pointer; transition: 0.2s; }
+.play-btn { background: white; color: black; margin-right: 10px; }
+.play-btn:hover { background: rgba(255,255,255,0.8); }
+.info-btn { background: rgba(109, 109, 110, 0.7); color: white; }
+.info-btn:hover { background: rgba(109, 109, 110, 0.4); }
+
+/* Row Styling */
+.rows-container { padding-bottom: 50px; margin-top: -100px; position: relative; z-index: 20; }
+.movie-row { margin-bottom: 40px; padding: 0 4%; }
+.movie-row h2 { font-size: 1.4rem; color: #e5e5e5; margin-bottom: 10px; }
+.slider { display: flex; gap: 8px; overflow-x: auto; padding: 20px 0; scrollbar-width: none; }
+.slider::-webkit-scrollbar { display: none; }
+
+/* Netflix Card Effect */
+.card {
+    min-width: var(--card-width); height: var(--card-height);
+    background: #2f2f2f; border-radius: 4px; cursor: pointer;
+    position: relative; transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This prevents stretching */
+    display: block;
+    background-color: #333; /* Shows dark gray while loading */
+}
+.card:hover { transform: scale(1.4); z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.9); }
+
+/* Card Info Panel */
+.card-info {
+    position: absolute; bottom: 0; width: 100%; background: #181818;
+    padding: 12px; opacity: 0; transition: 0.3s;
+    border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;
+    box-shadow: 0 -10px 20px rgba(0,0,0,0.5);
+}
+.card:hover .card-info { opacity: 1; }
+.card-info .icons { display: flex; gap: 8px; margin-bottom: 8px; }
+.card-info .icons i { 
+    border: 1px solid rgba(255,255,255,0.5); padding: 5px; border-radius: 50%; 
+    width: 28px; height: 28px; display: flex; justify-content: center; align-items: center; 
+    font-size: 0.7rem; transition: 0.2s;
+}
+.card-info .icons i:hover { border-color: white; transform: scale(1.1); }
+.card-info .icons .fa-play { background: white; color: black; border: none; }
+
+.card-info h4 { font-size: 0.8rem; margin-top: 5px; }
+.card-info .stats { font-size: 0.65rem; color: #46d369; font-weight: bold; }
+
+/* Subpage specific styles */
+.subpage-container {
+    padding: 100px 4% 50px;
+    min-height: 100vh;
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* On subpages, we use a static grid instead of a slider */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 40px 10px;
+}
+
+/* Make sure cards have same aspect ratio */
+.movie-grid .card {
+    width: 100%;
+}
+
+.empty-msg {
+    color: #808080;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 50px;
+    grid-column: 1 / -1;
+}
